@@ -56,14 +56,19 @@ public class HostManager {
 
     private boolean tryConnect(Host host) {
         // 用SSH尝试链接，能连上说明活着
-        try (Session session = new JSch().getSession(host.getUsername(), host.getIp(), host.getPort())) {
+        Session session = null;
+        try {
+            JSch jSch = new JSch();
+            session = jSch.getSession(host.getUsername(), host.getIp(), host.getPort());
             session.setPassword(host.getPassword());
             session.setConfig("StrictHostKeyChecking", "no");
             session.connect(3000);
-            session.disconnect();
             return true;
         } catch (Exception e) {
             return false;
+        } finally {
+            assert session != null;
+            session.disconnect();
         }
     }
 
