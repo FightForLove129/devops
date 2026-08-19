@@ -3,7 +3,8 @@ package com.pain.devops.constants;
 public enum StepType {
     HOST_SELECT("hostSelect"),
     EXEC_SCRIPT("execScript"),
-    SEND_NOTIFICATION("sendNotification");
+    SEND_NOTIFICATION("sendNotification"),
+    WAIT("wait");
 
     private String value;
     StepType(String value) {
