@@ -55,7 +55,7 @@ public class TaskEngine {
         return result;
     }
 
-    private StepExecutionResult executeStep(TaskStep step) {
+    public StepExecutionResult executeStep(TaskStep step) {
         StepExecutionResult result = new StepExecutionResult();
         result.setStepName(step.getName());
         result.setStartTime(LocalDateTime.now());
